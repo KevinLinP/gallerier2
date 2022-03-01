@@ -7,13 +7,14 @@
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyCphqLadhAsJQFHfbFnsyNja7nrnt4TR3c",
-    authDomain: "gallerier-437e9.firebaseapp.com",
-    projectId: "gallerier-437e9",
-    storageBucket: "gallerier-437e9.appspot.com",
-    messagingSenderId: "1002773887372",
-    appId: "1:1002773887372:web:4a4edf59b41661077cbea9"
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: `${import.meta.env.VITE_projectId}.firebaseapp.com`,
+    projectId: import.meta.env.VITE_projectId,
+    appId: import.meta.env.VITE_appId
   };
+
+
+  console.log(firebaseConfig)
 
   let user
 
