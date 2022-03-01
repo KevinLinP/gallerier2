@@ -29,7 +29,11 @@
 
   onAuthStateChanged(auth, (authUser) => {
     user = authUser
-    console.log('user', user)
+
+    if (user) {
+      console.log('user', user)
+      logImages()
+    }
   });
 
   function loginClicked() {
@@ -55,6 +59,21 @@
 
   function logoutClicked() {
     auth.signOut()
+  }
+
+  import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+
+  const db = getFirestore()
+
+  async function logImages() {
+    const q = query(collection(db, "images"));
+
+    const querySnapshot = await getDocs(q);
+    const images = []
+    querySnapshot.forEach((imageSnapshot) => {
+      images.push(imageSnapshot.data())
+    });
+    console.log('images', images)
   }
 </script>
 
